@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section3 Generating interactive notebooks | Advanced Dimension Reduction with UMAP and t-SNE and how to create Interactive Notebooks - AcqVA Aurora workshop</title>
+  <meta name="description" content="Section3 Generating interactive notebooks | Advanced Dimension Reduction with UMAP and t-SNE and how to create Interactive Notebooks - AcqVA Aurora workshop" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section3 Generating interactive notebooks | Advanced Dimension Reduction with UMAP and t-SNE and how to create Interactive Notebooks - AcqVA Aurora workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section3 Generating interactive notebooks | Advanced Dimension Reduction with UMAP and t-SNE and how to create Interactive Notebooks - AcqVA Aurora workshop" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2024-01-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="umap-and-t-sne.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Advanced Dimension Reduction and Interactive Notebooks</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-to-do-before-the-workshop"><i class="fa fa-check"></i>What to do before the workshop</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html"><i class="fa fa-check"></i><b>2</b> UMAP and t-SNE</a>
+<ul>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#key-aspects-of-umap"><i class="fa fa-check"></i>Key aspects of UMAP</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#comparison-between-umap-and-pca"><i class="fa fa-check"></i>Comparison between UMAP and PCA</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#how-does-umap-work"><i class="fa fa-check"></i>How does UMAP work?</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#what-are-differences-between-umap-and-t-sne"><i class="fa fa-check"></i>What are differences between UMAP and t-SNE?</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#practice"><i class="fa fa-check"></i>Practice</a>
+<ul>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#example-1-iris"><i class="fa fa-check"></i>Example 1: iris</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#implement-t-sne"><i class="fa fa-check"></i>Implement t-SNE</a></li>
+<li class="chapter" data-level="" data-path="umap-and-t-sne.html"><a href="umap-and-t-sne.html#example-2-brechjes-participants"><i class="fa fa-check"></i>Example 2: Brechje’s participants</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generating-interactive-notebooks.html"><a href="generating-interactive-notebooks.html"><i class="fa fa-check"></i><b>3</b> Generating interactive notebooks</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="generating-interactive-notebooks.html"><a href="generating-interactive-notebooks.html#preparation-of-the-rmd"><i class="fa fa-check"></i><b>3.1</b> Preparation of the Rmd</a></li>
+<li class="chapter" data-level="3.2" data-path="generating-interactive-notebooks.html"><a href="generating-interactive-notebooks.html#converting-your-rmd-into-a-jupyter-notebook"><i class="fa fa-check"></i><b>3.2</b> Converting your Rmd into a Jupyter notebook</a></li>
+<li class="chapter" data-level="3.3" data-path="generating-interactive-notebooks.html"><a href="generating-interactive-notebooks.html#creating-a-github-repository-that-connects-to-binder"><i class="fa fa-check"></i><b>3.3</b> Creating a GitHub repository that connects to Binder</a></li>
+<li class="chapter" data-level="3.4" data-path="generating-interactive-notebooks.html"><a href="generating-interactive-notebooks.html#outro"><i class="fa fa-check"></i><b>3.4</b> Outro</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Dimension Reduction with UMAP and t-SNE and how to create Interactive Notebooks - AcqVA Aurora workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generating-interactive-notebooks" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Section3</span> Generating interactive notebooks<a href="generating-interactive-notebooks.html#generating-interactive-notebooks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this part of the workshop, we generate an interactive notebook. We generate this interactive notebook out of a GitHub repository for which we use a template provided by the <em>Australian Text Analytics Platform</em> (ATAP) and the <em>Language Data Commons of Australia</em> (LDaCA). What happen when the static notebook is trandformed into an interactive notebook is that the GitHub repository is Dockerised which means that a virtual machine is created according to the parameters specified in the GitHub repo. Then, the interactive notebook is loaded into a Binder workspace which allows others to work with copies of your notebook. Once a session ends, the copy of the notebook is closed (but you can save a copy of the notebook at any stage).</p>
+<p>Generating interactive notebooks can be used to render one’s work transparent or to share analyses with reviewers. It can be used for both quantitative statistical as well as qualitative, interpretative work.</p>
+<p>Interactive notebooks allow other to execute your code and edit it, for example, to check aspects of your data or your analyses.</p>
+<p>Before generating an interactive notebook, we need to have three things:</p>
+<ul>
+<li>an R project with a Rmd file</li>
+<li>an Rmd file called <em>rmd2jupyter.Rmd</em></li>
+<li>a GitHub account</li>
+</ul>
+<p>The Rmd file should only use R (or Python or Julia) but no mix of languages. Also, everything one needs should be available in the GitHub repository, e.g. the data. I very strongly suggest that you generate interactive notebooks only once a project or an analysis is finished.</p>
+<p>Let’s go over the process of generating an interactive notebook.</p>
+<div id="preparation-of-the-rmd" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Preparation of the Rmd<a href="generating-interactive-notebooks.html#preparation-of-the-rmd" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>We start by copying the Rmd file (I usually only add “_cb” at the end of the Rmd-filename to indicate that this is the file which will be converted into an interactive notebook).</p></li>
+<li><p>Interactive Jupyter notebooks do not use a YAML metadata header like the YAML metadata header we have in R Notebooks. This means that we delete the YAML metadata header and add a first level header to give our notebook a title. I would suggest to downgrade all headers in your Rmd so that the original structure is preserved.</p></li>
+<li><p>We create a simple editor file in which we save all packages that we need to install. Then, we remove all code chunks that install packages (in Jupyter notebooks, it more difficult to have code chunks that we want to hide so you should also remove all code chunks you want to hide).</p></li>
+</ol>
+</div>
+<div id="converting-your-rmd-into-a-jupyter-notebook" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Converting your Rmd into a Jupyter notebook<a href="generating-interactive-notebooks.html#converting-your-rmd-into-a-jupyter-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Next, we open the rmd2jupyter.Rmd and install and activate the rmd2jupyter package which contains the rmd2jupyter function that we use to convert the Rmd into a Jupyter notebook. We need to sue the devtools package for the installation as this package is not available via CRAN.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="generating-interactive-notebooks.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-2"><a href="generating-interactive-notebooks.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb1-3"><a href="generating-interactive-notebooks.html#cb1-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;mkearney/rmd2jupyter&quot;</span>)</span>
+<span id="cb1-4"><a href="generating-interactive-notebooks.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(rmd2jupyter)</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Once the rmd2jupyter package is activated, we use the rmd2jupyter function to convert our Rmd to a Jupyter notebook.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="generating-interactive-notebooks.html#cb2-1" tabindex="-1"></a><span class="co"># convert 1 notebook</span></span>
+<span id="cb2-2"><a href="generating-interactive-notebooks.html#cb2-2" tabindex="-1"></a>rmd2jupyter<span class="sc">::</span><span class="fu">rmd2jupyter</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;acvqainter_cb.Rmd&quot;</span>))</span></code></pre></div>
+</div>
+<div id="creating-a-github-repository-that-connects-to-binder" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Creating a GitHub repository that connects to Binder<a href="generating-interactive-notebooks.html#creating-a-github-repository-that-connects-to-binder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol start="6" style="list-style-type: decimal">
+<li><p>In a first step, log in to your GitHub account and go to: <a href="https://github.com/Australian-Text-Analytics-Platform/r-binder-template">https://github.com/Australian-Text-Analytics-Platform/r-binder-template</a>.</p></li>
+<li><p>on that GitHub page, click on <em>Use this template</em> and select <em>Create a new repository</em> from the from down menu. Then choose a name for the repository (optional: add a short description of what the repository contains and what it is for).</p></li>
+<li><p>Next, open the file <em>install.R</em> and specify what packages need to be pre-installed by adding, for example, <em>install.packages(“dplyr)</em> to pre-install the dplyr package. Note that each installation command must be on a new line.</p></li>
+<li><p>Now, upload your Jupyter notebook by selecting the <em>Upload file</em> from the drop-down menu that appears once you have clicked on <em>Add file</em>.</p></li>
+</ol>
+<p>If you want to create folders in this GitHib repository, you will first need to create a dummy file and specify that the dummay is located in a subfolder. You can do this by clicking on <code>Add file</code> &gt; <code>Create new file</code> and then name the file, for instance, <code>data/test.txt</code> - this will automatically create a subfolder called <em>data</em> in which you can now upload your data files.</p>
+<p>Once you have specified all required packages in the <code>install.R</code>, uploaded your Jupyter notebook and all neccessary data files, you can start the notebook by following a link. In our case, the link to the notebook is <a href="https://mybinder.org/v2/gh/mschw81/acqvainter/main?labpath=acqvainter_cb.ipynb">https://mybinder.org/v2/gh/mschw81/acqvainter/main?labpath=acqvainter_cb.ipynb</a>.</p>
+<p>You will need to adapt parts of this url so that it points to your interactive notebook. There are three sequences you need to adapt:
++ the user name (<em>mschw81</em> is my GitHub username)
++ the repo name (<em>acqvainter</em> is the repo name)
++ the notebook name (<em>acqvainter_cb.ipynb</em> is the notebook name).</p>
+<p>As an alterntive, you can also upload your Jupyter notebook into Google Colab and share it with others. The issue is that Google Colab will kick you out if computations (including package installations) take too long and you have rather limited computing power.</p>
+<p>Be aware that the first time you start your interactive notebook, the set up will take very long because a Docker image (a virtual machine) with all required software applications and packages will be created from your GitHub repository. This can take up to an hour if your notebook is very complex and has many dependencies. Simpler notebooks fire up much faster but will take at least 10 minutes to start when you first fire them up.</p>
+</div>
+<div id="outro" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Outro<a href="generating-interactive-notebooks.html#outro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally, we extract the session information.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="generating-interactive-notebooks.html#cb3-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.3.2 (2023-10-31 ucrt)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 11 x64 (build 22621)
+## 
+## Matrix products: default
+## 
+## 
+## locale:
+## [1] LC_COLLATE=English_Australia.utf8  LC_CTYPE=English_Australia.utf8   
+## [3] LC_MONETARY=English_Australia.utf8 LC_NUMERIC=C                      
+## [5] LC_TIME=English_Australia.utf8    
+## 
+## time zone: Australia/Brisbane
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.37     fastmap_1.1.1    
+##  [5] xfun_0.41         cachem_1.0.8      knitr_1.45        htmltools_0.5.7  
+##  [9] rmarkdown_2.25    lifecycle_1.0.4   cli_3.6.2         sass_0.4.8       
+## [13] jquerylib_0.1.4   compiler_4.3.2    rstudioapi_0.15.0 tools_4.3.2      
+## [17] evaluate_0.23     bslib_0.6.1       yaml_2.3.8        jsonlite_1.8.8   
+## [21] rlang_1.1.3</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="umap-and-t-sne.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/mschw81/AcqVA-Aurora-UMAP-WS/edit/main/03-interactive.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/mschw81/AcqVA-Aurora-UMAP-WS/blob/main/03-interactive.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
