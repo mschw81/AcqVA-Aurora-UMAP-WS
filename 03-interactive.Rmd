@@ -1,0 +1,78 @@
+# Generating interactive notebooks
+
+In this part of the workshop, we generate an interactive notebook. We generate this interactive notebook out of a GitHub repository for which we use a template provided by the *Australian Text Analytics Platform* (ATAP) and the *Language Data Commons of Australia* (LDaCA). What happen when the static notebook is trandformed into an interactive notebook is that the GitHub repository is Dockerised which means that a virtual machine is created according to the parameters specified in the GitHub repo. Then, the interactive notebook is loaded into a Binder workspace which allows others to work with copies of your notebook. Once a session ends, the copy of the notebook is closed (but you can save a copy of the notebook at any stage).
+
+Generating interactive notebooks can be used to render one's work transparent or to share analyses with reviewers. It can be used for both quantitative statistical as well as qualitative, interpretative work. 
+
+Interactive notebooks allow other to execute your code and edit it, for example, to check aspects of your data or your analyses.
+
+
+Before generating an interactive notebook, we need to have three things:
+
++ an R project with a Rmd file
++ an Rmd file called *rmd2jupyter.Rmd*
++ a GitHub account 
+
+The Rmd file should only use R (or Python or Julia) but no mix of languages. Also, everything one needs should be available in the GitHub repository, e.g. the data. I very strongly suggest that you generate interactive notebooks only once a project or an analysis is finished.
+
+Let's go over the process of generating an interactive notebook.
+
+## Preparation of the Rmd
+
+1. We start by copying the Rmd file (I usually only add "_cb" at the end of the Rmd-filename to indicate that this is the file which will be converted into an interactive notebook). 
+
+2. Interactive Jupyter notebooks do not use a YAML metadata header like the YAML metadata header we have in R Notebooks. This means that we delete the YAML metadata header and add a first level header to give our notebook a title. I would suggest to downgrade all headers in your Rmd so that the original structure is preserved. 
+
+3. We create a simple editor file in which we save all packages that we need to install. Then, we remove all code chunks that install packages (in Jupyter notebooks, it more difficult to have code chunks that we want to hide so you should also remove all code chunks you want to hide).
+
+## Converting your Rmd into a Jupyter notebook
+
+4. Next, we open the rmd2jupyter.Rmd and install and activate the rmd2jupyter package which contains the rmd2jupyter function that we use to convert the Rmd into a Jupyter notebook. We need to sue the devtools package for the installation as this package is not available via CRAN.
+
+
+```{r installconverter, eval = F, message=F, warning=F}
+library(here)
+library(devtools)
+devtools::install_github("mkearney/rmd2jupyter")
+library(rmd2jupyter)
+```
+
+5. Once the rmd2jupyter package is activated, we use the rmd2jupyter function to convert our Rmd to a Jupyter notebook.
+
+```{r convert1, eval = F, message = F}
+# convert 1 notebook
+rmd2jupyter::rmd2jupyter(here::here("acvqainter_cb.Rmd"))
+```
+
+## Creating a GitHub repository that connects to Binder
+
+6. In a first step, log in to your GitHub account and go to: [https://github.com/Australian-Text-Analytics-Platform/r-binder-template](https://github.com/Australian-Text-Analytics-Platform/r-binder-template).
+
+7. on that GitHub page, click on *Use this template* and select *Create a new repository* from the from down menu. Then choose a name for the repository (optional: add a short description of what the repository contains and what it is for).
+
+8. Next, open the file *install.R* and specify what packages need to be pre-installed by adding, for example, *install.packages("dplyr)* to pre-install the dplyr package. Note that each installation command must be on a new line.
+
+9. Now, upload your Jupyter notebook by selecting the *Upload file* from the drop-down menu that appears once you have clicked on *Add file*.
+
+If you want to create folders in this GitHib repository, you will first need to create a dummy file and specify that the dummay is located in a subfolder. You can do this by clicking on `Add file` > `Create new file` and then name the file, for instance, `data/test.txt` - this will automatically create a subfolder called *data* in which you can now upload your data files.
+
+Once you have specified all required packages in the `install.R`, uploaded your Jupyter notebook and all neccessary data files, you can start the notebook by following a link. In our case, the link to the notebook is [https://mybinder.org/v2/gh/mschw81/acqvainter/main?labpath=acqvainter_cb.ipynb](https://mybinder.org/v2/gh/mschw81/acqvainter/main?labpath=acqvainter_cb.ipynb). 
+
+You will need to adapt parts of this url so that it points to your interactive notebook. There are three sequences you need to adapt:
+   + the user name (*mschw81* is my GitHub username) 
+   + the repo name (*acqvainter* is the repo name)
+   + the notebook name (*acqvainter_cb.ipynb* is the notebook name).
+   
+As an alterntive, you can also upload your Jupyter notebook into Google Colab and share it with others. The issue is that Google Colab will kick you out if computations (including package installations) take too long and you have rather limited computing power. 
+
+Be aware that the first time you start your interactive notebook, the set up will take very long because a Docker image (a virtual machine) with all required software applications and packages will be created from your GitHub repository. This can take up to an hour if your notebook is very complex and has many dependencies. Simpler notebooks fire up much faster but will take at least 10 minutes to start when you first fire them up.
+
+## Outro
+
+Finally, we extract the session information.
+
+```{r}
+sessionInfo()
+```
+
+
