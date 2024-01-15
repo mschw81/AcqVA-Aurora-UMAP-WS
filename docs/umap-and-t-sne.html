@@ -438,21 +438,21 @@ StatQuest with Josh Starmer (<a href="https://www.youtube.com/watch?v=sDv4f4s2SB
 <span id="cb13-5"><a href="umap-and-t-sne.html#cb13-5" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb13-6"><a href="umap-and-t-sne.html#cb13-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(label)</span></code></pre></div>
 <pre><code>## sigma summary: Min. : 0.371156402817891 |1st Qu. : 0.483451059893582 |Median : 0.517217282896284 |Mean : 0.52578781673612 |3rd Qu. : 0.55783286579441 |Max. : 0.726992613548635 |</code></pre>
-<pre><code>## Epoch: Iteration #100 error is: 13.9526228451396</code></pre>
-<pre><code>## Epoch: Iteration #200 error is: 0.311268191437327</code></pre>
-<pre><code>## Epoch: Iteration #300 error is: 0.299589196682123</code></pre>
-<pre><code>## Epoch: Iteration #400 error is: 0.293623633090598</code></pre>
-<pre><code>## Epoch: Iteration #500 error is: 0.291768141133795</code></pre>
-<pre><code>## Epoch: Iteration #600 error is: 0.290561196948627</code></pre>
-<pre><code>## Epoch: Iteration #700 error is: 0.289707103698814</code></pre>
-<pre><code>## Epoch: Iteration #800 error is: 0.28906835294291</code></pre>
-<pre><code>## Epoch: Iteration #900 error is: 0.288637474620164</code></pre>
-<pre><code>## Epoch: Iteration #1000 error is: 0.288246456887305</code></pre>
+<pre><code>## Epoch: Iteration #100 error is: 13.9650190844777</code></pre>
+<pre><code>## Epoch: Iteration #200 error is: 0.315665746699505</code></pre>
+<pre><code>## Epoch: Iteration #300 error is: 0.305251514045166</code></pre>
+<pre><code>## Epoch: Iteration #400 error is: 0.301715472086119</code></pre>
+<pre><code>## Epoch: Iteration #500 error is: 0.300180476112018</code></pre>
+<pre><code>## Epoch: Iteration #600 error is: 0.299308409324969</code></pre>
+<pre><code>## Epoch: Iteration #700 error is: 0.298723065896091</code></pre>
+<pre><code>## Epoch: Iteration #800 error is: 0.298327733101495</code></pre>
+<pre><code>## Epoch: Iteration #900 error is: 0.298096995952058</code></pre>
+<pre><code>## Epoch: Iteration #1000 error is: 0.297776411082323</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="umap-and-t-sne.html#cb25-1" tabindex="-1"></a><span class="co"># inspect</span></span>
 <span id="cb25-2"><a href="umap-and-t-sne.html#cb25-2" tabindex="-1"></a><span class="fu">str</span>(tsne.res)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  3 variables:
-##  $ V1     : num  31.9 28.6 25.6 22 31.2 ...
-##  $ V2     : num  -17.2 -8.61 -14.72 -15.91 -20.14 ...
+##  $ V1     : num  4.52 9.05 2.99 -1.84 1.8 ...
+##  $ V2     : num  -34.5 -25.7 -27.6 -26.5 -35.8 ...
 ##  $ Species: Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>We now visualize t-SNE results.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="umap-and-t-sne.html#cb27-1" tabindex="-1"></a>tsne.res <span class="sc">%&gt;%</span></span>
